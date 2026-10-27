@@ -12,12 +12,14 @@ class Wizard(val name: String, var mana: Int, var spellPower: Int) {
                     return spellPower * 3
                 } else return 0
             }
+
             "Frostbite" -> {
                 if (mana >= 5) {
                     mana -= 5
                     return spellPower * 2
                 } else return 0
             }
+
             else -> {
                 return 0
             }
@@ -27,6 +29,11 @@ class Wizard(val name: String, var mana: Int, var spellPower: Int) {
     fun restoreMana(amount: Int) {
         mana = minOf(100, mana + amount)
     }
+
     fun train() {
+        if (mana >= 5) {
+            spellPower += 1
+            mana -= 5
+        }
     }
 }
